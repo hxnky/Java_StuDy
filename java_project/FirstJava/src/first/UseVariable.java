@@ -47,6 +47,33 @@ public class UseVariable {
 			i++; // 탈출의 연산식
 		}
 		
+		// 상수 생성
+		final double PI = 3.141592;
+		
+		long num5 = 10000000000L;
+
+		char ch3 = 'A';
+		int chNumber = ch3;
+		System.out.println("A의 유니코드 값 = " +chNumber);
+		
+		chNumber += 1; // chNumber = chNumber +1		
+		System.out.println(chNumber);
+		
+		System.out.println((char)chNumber);
+		
+		int age = 200;
+		System.out.println((byte)age); //overflow 발생
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 
