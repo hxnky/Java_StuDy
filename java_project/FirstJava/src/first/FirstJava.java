@@ -12,7 +12,6 @@ public class FirstJava {
 		System.out.println("Hello~ Java!"); // 클래스의 이름은 대문자로 시작해야함
 		
 		System.out.println("안녕~!!");
-	
 		
 
 
