@@ -214,3 +214,18 @@ java.io.FileNotFoundException: C:\Users\admin\Documents\GitHub\Java_StuDy\java_p
 	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
 	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 566 2020-09-28 17:28:33.384
+!MESSAGE Could not read master table.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\Documents\GitHub\Java_StuDy\java_project\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (액세스가 거부되었습니다)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyInputStream.<init>(SafeChunkyInputStream.java:37)
+	at org.eclipse.core.internal.localstore.SafeChunkyInputStream.<init>(SafeChunkyInputStream.java:33)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMasterTable(SaveManager.java:846)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1239)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1143)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
