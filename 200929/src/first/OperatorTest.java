@@ -138,7 +138,7 @@ public class OperatorTest {
 			System.out.println("Fantastic JAVA");
 			break;
 		case 4:
-			System.out.println("데이터를 삭제합니다..");
+			System.out.println("데이터를 삭제합니다.");
 			break;
 			/*
 		default:
