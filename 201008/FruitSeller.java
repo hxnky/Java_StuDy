@@ -34,6 +34,15 @@ public class FruitSeller {
 		myMoney = money;
 	}
 	
+	FruitSeller(FruitSeller seller){
+		APPLE_PRICE = seller.APPLE_PRICE;
+		numOfApple = seller.numOfApple;
+		myMoney = seller.myMoney;
+	}
+	
+	
+	
+	
 	// 기능 : 판매, 정산 출력
 	// 판매 메서드 :	돈을 받고 -->
 	// 			반환하는 사과의 개수,
