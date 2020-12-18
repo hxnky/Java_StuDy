@@ -24,5 +24,6 @@
 			<td><%=data.getPw() %></td>
 		</tr>
 	</table>
+	<h3><a href="loginSessionCheck.jsp">로그인 체크 페이지</a></h3>
 </body>
 </html>
