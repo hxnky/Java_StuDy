@@ -1,6 +1,7 @@
 <%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%
 	CookieBox cookieBox = new CookieBox(request);
 
@@ -14,6 +15,10 @@ String checked = cookieBox.exists("uid") ? " checked " : "";
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 폼</title>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/default.css">
+
+
 </head>
 
 <body>
