@@ -9,7 +9,6 @@
 <link rel="styleSheet" href="${url_defaultCss}">
 
 <style>
-
 </style>
 </head>
 <body>

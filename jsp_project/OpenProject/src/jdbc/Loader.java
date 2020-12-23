@@ -13,10 +13,10 @@ public class Loader extends HttpServlet {
 		// Mysql의 드라이버를 로드
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			System.out.println("Mysql 드라이버 로드 성공!");
+			System.out.println("Mysql 드라이버 로드 성공입니뎅!");
 			
 		} catch (ClassNotFoundException e) {
-			System.out.println("Mysql 드라이버 로드 실패!");
+			System.out.println("Mysql 드라이버 로드 실패입니뎅!");
 			e.printStackTrace();
 		}
 		
