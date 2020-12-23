@@ -8,9 +8,6 @@
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- 서블릿 등록 -> 서블릿 이름, 서블릿 클래스의 풀네임 -->
@@ -24,17 +21,38 @@
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 
-	<!-- 에러페이지 등록 -->
+	<!-- 에러 페이지의 등록 -->
+	<!-- http 상태코드로 등록 -->
 	<error-page>
 		<error-code>404</error-code>
-		<location>/error/error404,jsp</location>
+		<location>/error/error404.jsp</location>
 	</error-page>
+
 	<error-page>
 		<error-code>500</error-code>
-		<location>/error/error500,jsp</location>
+		<location>/error/error500.jsp</location>
 	</error-page>
+
 	<error-page>
 		<exception-type>java.lang.NullPointerException</exception-type>
 		<location>/error/errorType.jsp</location>
 	</error-page>
+
+	<!-- 필터 등록 -->
+	<filter>
+		<filter-name>LoginCheckFilter</filter-name>
+		<filter-class>filter.LoginCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginCheckFilter</filter-name>
+		<url-pattern>/mypage/*</url-pattern>
+	</filter-mapping>
+
+
+
+
+
+
+
+
 </web-app>

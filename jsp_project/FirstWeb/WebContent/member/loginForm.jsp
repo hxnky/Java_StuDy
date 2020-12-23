@@ -1,7 +1,9 @@
 <%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
 	CookieBox cookieBox = new CookieBox(request);
 
@@ -16,7 +18,8 @@ String checked = cookieBox.exists("uid") ? " checked " : "";
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 폼</title>
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/default.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/default.css">
 
 
 </head>
@@ -24,7 +27,7 @@ String checked = cookieBox.exists("uid") ? " checked " : "";
 <body>
 	<h1>회원 로그인</h1>
 	<hr>
-	<form action="login.jsp" method="post">
+	<form action="<c:url value="/member/login.jsp"/>" method="post">
 		<table>
 			<tr>
 				<th><label for="userid">아이디</label></th>
