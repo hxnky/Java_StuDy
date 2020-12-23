@@ -17,13 +17,15 @@
 	<table>
 		<tr>
 			<td>아이디</td>
-			<td><%=data.getUserid() %></td>
+			<td><%=data.getUserid()%></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><%=data.getPw() %></td>
+			<td><%=data.getPw()%></td>
 		</tr>
 	</table>
-	<h3><a href="loginSessionCheck.jsp">로그인 체크 페이지</a></h3>
+	<h3>
+		<a href="loginSessionCheck.jsp">로그인 체크 페이지</a>
+	</h3>
 </body>
 </html>

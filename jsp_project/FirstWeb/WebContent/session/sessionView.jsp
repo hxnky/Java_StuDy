@@ -9,6 +9,8 @@
 <body>
 
 <h1>세션의 속성에 저장된 userName : <%= session.getAttribute("userName")%></h1>
+<h1>세션의 속성에 저장된 userName : ${sessionScope. }</h1>
+
 
 <h1><a href="../index.jsp">index로 이동</a></h1>
 

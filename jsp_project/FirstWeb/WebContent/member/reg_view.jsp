@@ -17,19 +17,23 @@
 	<table>
 		<tr>
 			<td>아이디</td>
-			<td><%=data.getUserid() %></td>
+			<%-- <td><%=data.getUserid() %></td> --%>
+			<td>${memberInfo.userid() }</td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><%=data.getPw() %></td>
+			<%-- <td><%=data.getPw() %></td> --%>
+			<td>${memberInfo.pw() }</td>
 		</tr>
 		<tr>
 			<td>회원이름</td>
-			<td><%=data.getUsername() %></td>
+			<%-- <td><%=data.getUsername() %></td> --%>
+			<td>${memberInfo.username() }</td>
 		</tr>
 		<tr>
 			<td>회원사진</td>
-			<td><%=data.getUserPhoto() %></td>
+			<%-- <td><%=data.getUserPhoto() %></td> --%>
+			<td>${memberInfo.userphoto() }</td>
 		</tr>
 	</table>
 	

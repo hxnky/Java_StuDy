@@ -11,6 +11,8 @@ public class member {
 	public member() {
 	}
 
+
+
 	public member(String userid, String pw, String username, String userPhoto) {
 		super();
 		this.userid = userid;
