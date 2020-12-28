@@ -26,6 +26,16 @@ request.setAttribute("listView", listView);
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+div.bc {
+	background-color: #fafad2;
+	width: 412px;
+	margin: 0 auto;
+}
+
+hr {
+	width: 400px;
+}
+
 div.msgBox {
 	padding: 5px;
 	width: 400px;
@@ -59,91 +69,90 @@ div.numberBox>a {
 </style>
 </head>
 <body>
+	<div class="bc">
+		<h3>한경 방명록</h3>
+		<form action="writeMessage.jsp" method="post">
+			<table>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="guestName"></td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="password"></td>
+				</tr>
+				<tr>
+					<td>메시지</td>
+					<td><textarea name="message" rows="5" cols="30"></textarea></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="글쓰기"> <input
+						type="reset"></td>
+				</tr>
+			</table>
+		</form>
 
-	<h3>방명록 작성</h3>
-	<form action="writeMessage.jsp" method="post">
-		<table>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="guestName"></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password"></td>
-			</tr>
-			<tr>
-				<td>메시지</td>
-				<td><textarea name="message" rows="5" cols="30"></textarea></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" value="글쓰기"> <input
-					type="reset"></td>
-			</tr>
-		</table>
-	</form>
-
-	<hr>
+		<hr>
 
 
-	<div class="wrap">
+		<div class="wrap">
 
-		<c:if test="${empty listView.messageList}">
-			<%-- <c:if test="${listView.messageTotalCount eq 0}"> --%>
-			<%-- <c:if test="${listView.empty}"> --%>
+			<c:if test="${empty listView.messageList}">
+				<%-- <c:if test="${listView.messageTotalCount eq 0}"> --%>
+				<%-- <c:if test="${listView.empty}"> --%>
 
-			<div class="msgBox">작성된 게시물이 없습니다.</div>
+				<div class="msgBox">작성된 게시물이 없습니다.</div>
 
-		</c:if>
+			</c:if>
 
-		<c:if test="${not empty listView.messageList}">
+			<c:if test="${not empty listView.messageList}">
 
-			<c:forEach items="${listView.messageList}" var="message">
+				<c:forEach items="${listView.messageList}" var="message">
 
-				<div class="msgBox">
-					<table>
-						<tr>
-							<td>게시물 ID</td>
-							<td>${message.id}</td>
-						</tr>
-						<tr>
-							<td>작성자</td>
-							<td>${message.guestName}</td>
-						</tr>
-						<tr>
-							<td>메시지</td>
-							<td>${message.message}</td>
-						</tr>
-						<tr>
-							<td>작성일</td>
-							<td>${message.writedate}<br>
-							<fmt:formatDate value="${message.toDate}"
-									pattern="yyyy.MM.dd. HH:mm" />
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><a href="#">삭제하기</a></td>
-						</tr>
-					</table>
+					<div class="msgBox">
+						<table>
+							<tr>
+								<td>게시물 ID</td>
+								<td>${message.id}</td>
+							</tr>
+							<tr>
+								<td>작성자</td>
+								<td>${message.guestName}</td>
+							</tr>
+							<tr>
+								<td>메시지</td>
+								<td>${message.message}</td>
+							</tr>
+							<tr>
+								<td>작성일</td>
+								<td>${message.writedate}<br> <fmt:formatDate
+										value="${message.toDate}" pattern="yyyy.MM.dd. HH:mm" />
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><a href="#">삭제하기</a></td>
+							</tr>
+						</table>
+					</div>
+
+				</c:forEach>
+
+				<div class="paging">
+					<c:forEach begin="1" end="${listView.pageTotalCount}" var="num">
+						<div class="numberBox">
+							<a href="list.jsp?page=${num}">${num}</a>
+						</div>
+					</c:forEach>
 				</div>
 
-			</c:forEach>
 
-			<div class="paging">
-				<c:forEach begin="1" end="${listView.pageTotalCount}" var="num">
-					<div class="numberBox">
-						<a href="list.jsp?page=${num}">${num}</a>
-					</div>
-				</c:forEach>
-			</div>
+			</c:if>
 
 
-		</c:if>
-
-
+		</div>
 	</div>
-
 
 
 
