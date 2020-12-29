@@ -108,4 +108,50 @@ public class MessageDao {
 		return message;
 	}
 
+	public Message selectMessage(Connection conn, int mid) throws SQLException {
+		Message message = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from guestbook_message where message_id = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mid);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				message = makeMessage(rs);
+			}
+
+		} finally {
+			jdbcUtil.close(rs);
+			jdbcUtil.close(pstmt);
+		}
+
+		return message;
+	}
+
+	public int deleteMessage(Connection conn, int mid) throws SQLException {
+
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+
+		String sql = "DELETE FROM guestbook_message WHERE message_id = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mid);
+
+			resultCnt = pstmt.executeUpdate();
+		} finally {
+			jdbcUtil.close(pstmt);
+		}
+
+		return resultCnt;
+
+	}
+
 }
