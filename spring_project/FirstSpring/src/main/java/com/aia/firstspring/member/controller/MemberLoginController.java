@@ -14,7 +14,7 @@ import com.aia.firstspring.member.domain.LoginRequest;
 @RequestMapping("/member/login")
 public class MemberLoginController {
 
-	// @RequestMapping(value = "/member/login", method= RequestMethod.GET)
+	// @RequestMapping(value = "/member/login", method = RequestMethod.GET)
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getLoginForm() {
 		return new ModelAndView("member/loginForm");
@@ -22,30 +22,34 @@ public class MemberLoginController {
 
 	// @RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam("uid") String uid, @RequestParam("pw") String pw,
-			HttpServletRequest request, LoginRequest loginRequest) {
-
-		// 사용자의 파라미터 값을 받는 방법
-		// 1. HttpServletRequest 객체 사용
-		// 2. @RequestParam(폼의 네임 속성)
-		// 3. 커맨드 객체(Beans) 사용
+	public ModelAndView login(
+			@RequestParam("uid") String uid, 
+			@RequestParam("pw") String pw,
+			HttpServletRequest request, 
+			LoginRequest loginRequest
+			) {
 		
-		// login("cool", "1111") 형식으로 전달되어야함
+		// 사용자의 파라미터 값을 받는 방법
+		// 1. HttpServletRequest 객체를 이용
+		// 2. @RequestParam(폼의 네임 속성)
+		// 3. 커멘드 객체(Beans)를 이용
+
+		// login("cool", "1111")
 
 		System.out.println(loginRequest);
-		
-		String userId = request.getParameter(uid);
-		String userPw = request.getParameter(pw);
+
+		String userId = request.getParameter("uid");
+		String userPw = request.getParameter("pw");
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/login");
+		mav.setViewName("/member/login");
 		mav.addObject("uid", uid);
 		mav.addObject("pw", pw);
 		mav.addObject("userId", userId);
 		mav.addObject("userPw", userPw);
-		// mav.addObject("loginRequest", loginRequest);
-		
+		//mav.addObject("loginRequest", loginRequest);
 
-		return null;
+		return mav;
 	}
+
 }

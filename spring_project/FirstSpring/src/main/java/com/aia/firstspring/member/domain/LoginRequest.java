@@ -26,8 +26,4 @@ public class LoginRequest {
 		return "LoginRequest [uid=" + uid + ", pw=" + pw + "]";
 	}
 
-	
-	
-	
-	
 }

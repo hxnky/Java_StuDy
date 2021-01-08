@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>쿠키 정보 확인</title>
 </head>
 <body>
-	<h1>회원 검색</h1>
+	<h1>쿠키 정보</h1>
+	
+	<h3>
+		${userName } <br>
+		${cookieInfo }	<br>
+		${cookieAuth } <br>
+	</h3>
 </body>
 </html>

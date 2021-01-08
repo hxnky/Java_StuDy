@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>파일 업로드 성공</title>
 </head>
 <body>
-	<h1>회원 검색</h1>
+
+	<h1>
+		 학번 : ${sno }, 레포트 파일 이름 : ${reportFile }
+	</h1>
+	<img alt="" src="../uploadfile/${reportFile }">
 </body>
 </html>
