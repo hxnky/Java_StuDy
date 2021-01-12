@@ -27,6 +27,8 @@ public class MemberRegController {
 
 		int resultCnt = regService.insertMember(member);
 
+		System.out.println(member);
+		
 		model.addAttribute("resultCnt", resultCnt);
 
 		String view = "member/reg";

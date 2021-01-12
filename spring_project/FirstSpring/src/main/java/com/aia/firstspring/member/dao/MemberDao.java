@@ -30,7 +30,7 @@ public class MemberDao {
 	// 회원 목록
 	public List<Member> seleteMemberList() {
 
-		return template.query("select * from open.member order by membername", new RowMapper<Member>() {
+		return template.query("select * from open.member order by idx", new RowMapper<Member>() {
 
 			@Override
 			public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
