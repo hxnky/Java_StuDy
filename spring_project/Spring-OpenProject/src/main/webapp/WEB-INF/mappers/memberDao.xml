@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aia.op.member.dao.MemberDao">
+
+	<!-- 결과를 알아서 매핑해준다. -->
+	<resultMap id="memberResult"
+		type="com.aia.op.member.domain.Member">
+		<id column="idx" property="idx" />
+		<result column="memberid" property="memberid" />
+		<result column="password" property="password" />
+		<result column="membername" property="membername" />
+		<result column="memberphoto" property="memberphoto" />
+		<result column="regdate" property="regdate" />
+	</resultMap>
+
+	<insert id="insertMember"
+		parameterType="com.aia.op.member.domain.Member">
+		INSERT INTO member (memberid, password, membername,
+		memberphoto) VALUES
+		(#{memberid},#{password},#{membername},#{memberphoto})
+	</insert>
+
+	<select id="selectLogin"
+		resultType="com.aia.op.member.domain.Member" resultMap="memberResult">
+		select * from
+		member where memberid =#{param1} and password = #{param2}
+	</select>
+
+</mapper>
