@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="styleSheet" href="${url_defaultCss}">
+<link rel="styleSheet" href="<c:url value="/css/default.css"/>">
 <style>
 </style>
 </head>
@@ -22,10 +22,8 @@
 		<hr>
 		<div class="content">
 		
-<%-- 		${memberRegRequest} --%>
-<%-- 		${regData} --%>
-		
-		<br>
+		${memberRegRequest}
+		${regData}
 		
 		<c:if test="${result > 0}">
 		정상적으로 회원가입이 되었습니다. 환영합니뎅 ~ (´▽`ʃ♡ƪ)(´▽`ʃ♡ƪ)
