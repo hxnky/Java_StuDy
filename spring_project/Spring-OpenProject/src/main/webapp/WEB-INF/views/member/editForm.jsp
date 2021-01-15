@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 정보 수정</title>
 
 <link rel="styleSheet" href="<c:url value="/css/default.css"/>">
 
@@ -28,7 +28,8 @@
 				<table>
 					<tr>
 						<th><label for="userid">아이디(email)</label></th>
-						<td><input type="email" id="userid" name="userid"></td>
+						<td><input type="email" id="userid" name="userid" value="${member.memberid}"
+							readonly> <input type="text" id="idx" value="${member.idx }"></td>
 					</tr>
 					<tr>
 						<th><label for="pw">비밀번호</label></th>
@@ -36,17 +37,24 @@
 					</tr>
 					<tr>
 						<th><label for="username">이름</label></th>
-						<td><input type="text" id="username" name="username">
+						<td><input type="text" id="username" name="username" value="${member.membername}">
 						</td>
 					</tr>
 					<tr>
-						<th><label for="userPhoto">사진</label></th>
+						<th><label for="userPhoto">현재 사진</label></th>
+						<td><img alt="현재 프로필 사진"
+							src="<c:url value="/fileupload/member/"/>"> <input
+							type="text" id="oldPhoto" name="oldPhoto" value="${member.memberphoto}">
+						</td>
+					</tr>
+					<tr>
+						<th><label for="userPhoto">수정 사진</label></th>
 						<td><input type="file" id="userPhoto" name="userPhoto">
 						</td>
 					</tr>
 					<tr>
 						<th></th>
-						<td><input type="submit" value="회원가입"></td>
+						<td><input type="submit" value="회원 정보 수정"></td>
 					</tr>
 				</table>
 			</form>

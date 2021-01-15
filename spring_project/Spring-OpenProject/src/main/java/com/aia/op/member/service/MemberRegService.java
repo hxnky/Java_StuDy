@@ -17,47 +17,54 @@ import com.aia.op.member.domain.MemberRegRequest;
 public class MemberRegService {
 
 	private MemberDao dao;
-	
+
 	@Autowired
 	private SqlSessionTemplate template;
 
-	// 파일 업로드, 데이터베이스 저장
+	// 파일을 업로드, 데이터베이스 저장
 	public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) {
-
-		// 웹 경로
-		String uploadPath = "/fileupload/member";
-		// 실제 경로
-		String saveDiretoryPath = request.getSession().getServletContext().getRealPath(uploadPath);
-		// 새로운 파일 이름
-		String newFileName = regRequest.getUserid() + System.currentTimeMillis();
-
-		File newFile = new File(saveDiretoryPath, newFileName);
 		
 		int result = 0;
-
-		// 파일 저장
-		try {
-			regRequest.getUserPhoto().transferTo(newFile);
-
-			Member member = regRequest.toMember();
-			member.setMemberphoto(newFileName);
-
-			// 데이터베이스 입력
-			dao = template.getMapper(MemberDao.class);
+		
+		File newFile = null;
+		String newFileName = null;
+		
+		if(!regRequest.getUserPhoto().isEmpty()) {
+			// 웹 경로
+			String uploadPath = "/fileupload/member";
+			// 시스템의 실제 경로
+			String saveDirPath = request.getSession().getServletContext().getRealPath(uploadPath);
+			// 새로운 파일 이름
+			newFileName = regRequest.getUserid() + System.currentTimeMillis();
+			newFile = new File(saveDirPath, newFileName);
 			
-			result = dao.insertMember(member);
+			/* 파일 저장 */
+			try {
+				regRequest.getUserPhoto().transferTo(newFile);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		}
+		
+		Member member = regRequest.toMember();
+		if(newFileName != null) {
+			member.setMemberphoto(newFileName);
+		}
+
+		try {
+			// 데이터 베이스 입력
+			dao = template.getMapper(MemberDao.class);
+			result = dao.insertMember(member);
 		} catch (Exception e) {
 			e.printStackTrace();
-			
-			// 현재 저장한 파일이 있다면 삭제한다.
-			if(newFile.exists()) {
+			// 현재 저장한 파일이 있다면??!! -> 삭제
+			if (newFile != null && newFile.exists()) {
 				newFile.delete();
 			}
+
 		}
 
 		return result;
