@@ -10,13 +10,9 @@
 
 	<h1>Form</h1>
 
-	<form method="POST">
-		name : <input type="text" name="uname"> <br>
-		age : <input type="number" name="age"> <br>
-		<input type="submit">
+	<form method="post">
+
+		name : <input type="text" name="uname"> <br> age : <input
+			type="number" name="age"> <br> <input type="submit">
+
 	</form>
-
-
-
-</body>
-</html>

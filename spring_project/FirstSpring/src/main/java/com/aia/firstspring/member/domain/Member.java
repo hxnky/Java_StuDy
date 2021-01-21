@@ -62,7 +62,7 @@ public class Member {
 
 	public Date toDate() { // ${member.toDate}
 		
-		return new Date(getRegdate().getTime());
+		return getRegdate()==null ? null : new Date(getRegdate().getTime());
 	}
 
 	
