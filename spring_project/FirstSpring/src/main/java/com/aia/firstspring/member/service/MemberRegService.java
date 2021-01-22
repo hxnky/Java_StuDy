@@ -2,10 +2,14 @@ package com.aia.firstspring.member.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.aia.firstspring.Util.AES256Util;
+import com.aia.firstspring.Util.Sha256;
 import com.aia.firstspring.member.dao.MemberInterfaceDao;
 import com.aia.firstspring.member.domain.Member;
+import com.aia.firstspring.service.MailSenderService;
 
 @Service
 public class MemberRegService {
@@ -15,13 +19,23 @@ public class MemberRegService {
 
 //	@Autowired
 //	private MybatisMemberDao dao;
-	
+
 	MemberInterfaceDao dao;
-	
+
 	@Autowired
 	private SqlSessionTemplate template;
+
+	@Autowired
+	private MailSenderService mailSenderService;
+
+	@Autowired
+	private Sha256 sha256;
 	
+	@Autowired
+	private AES256Util aes256Util;
 	
+	@Autowired
+	private BCryptPasswordEncoder cryptPasswordEncoder;
 	
 	public int insertMember(Member member) {
 
@@ -29,7 +43,35 @@ public class MemberRegService {
 
 		try {
 			dao = template.getMapper(MemberInterfaceDao.class);
-			result = dao.insertMember(member);
+			// result = dao.insertMember(member);		// 가입 완료
+			result = 1;
+			
+			
+			System.out.println(sha256.encrypt(member.getPassword()));	// 암호화 처리 된 패스워드 출력
+			
+			System.out.println("------------------------------------------------");
+			// AES256 암호화 : insert, update 시 사용
+			String epw = aes256Util.encrypt(member.getPassword());
+			// AES256 복호화 : select 시 사용
+			String ppw = aes256Util.decrypt(epw);
+			System.out.println("AES256으로 암호화된 문자열 : " + epw);
+			System.out.println("AES256으로 복호화된 문자열 : " + ppw);
+			
+			System.out.println("------------------------------------------------");
+			System.out.println("BCryptPasswordEncoder를 이용한 암호화 처리");
+			
+			String securityPw = cryptPasswordEncoder.encode(member.getPassword());
+			System.out.println(securityPw);
+			System.out.println("비밀번호 비교 메소드 : matches");
+			System.out.println(cryptPasswordEncoder.matches("111", securityPw));
+			System.out.println(cryptPasswordEncoder.matches(member.getPassword(), securityPw));
+			
+			
+			String html = "<h1>회원가입을 완료하시려면 아래 링크를 통해 인증해주세요!"+"<a href=\"http://localhost:8080/firstspring\">인증하기</a></h1>";
+			
+			// 메일 전송
+			// mailSenderService.mailSend(member.getMemberid(), member.getMembername(), "[안내] PEEPS 회원 가입을 축하드립니다!", html);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
