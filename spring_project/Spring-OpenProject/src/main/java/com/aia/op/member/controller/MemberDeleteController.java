@@ -20,7 +20,7 @@ public class MemberDeleteController {
 			Model model
 			) {
 		
-		// 0 또는 1
+		// 0 or 1
 		model.addAttribute("result", deleteService.deleteMember(idx));
 		
 		return "member/delete";

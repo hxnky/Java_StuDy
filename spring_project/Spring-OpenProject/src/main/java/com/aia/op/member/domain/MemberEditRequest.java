@@ -58,22 +58,23 @@ public class MemberEditRequest {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-
+	
 	public Member getToMember() {
-		
 		Member member = new Member();
 		member.setIdx(idx);
-		// member.setMemberid(userid);
+		//member.setMemberid(userid);
 		member.setMembername(username);
 		member.setPassword(pw);
 		
 		return member;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "MemberEditRequest [idx=" + idx + ", userid=" + userid + ", pw=" + pw + ", username=" + username
 				+ ", oldPhoto=" + oldPhoto + ", userPhoto=" + userPhoto.getOriginalFilename() + "]";
 	}
+
+	
 
 }

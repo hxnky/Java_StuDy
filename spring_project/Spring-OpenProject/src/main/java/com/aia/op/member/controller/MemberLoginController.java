@@ -19,17 +19,31 @@ public class MemberLoginController {
 	private MemberLoginService loginService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String lodginForm() {
-		
+	public String loginForm() {
 		return "member/loginForm";
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST)
-	public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String login(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			Model model
+			) {
 		
-		model.addAttribute("loginChk", loginService.login(request, response));
+		model.addAttribute("loginCheck", loginService.login(request, response));
 		
 		return "member/loginView";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

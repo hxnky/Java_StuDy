@@ -29,7 +29,4 @@ public class LoginInfo {
 		return "LoginInfo [memberid=" + memberid + ", membername=" + membername + ", memberphoto=" + memberphoto + "]";
 	}
 
-	
-	
-	
 }

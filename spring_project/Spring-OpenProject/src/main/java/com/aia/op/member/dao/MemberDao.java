@@ -28,11 +28,20 @@ public interface MemberDao {
 	// 회원 정보 삭제
 	int deleteMemberByIdx(int idx);
 	
-	// 회원 정보 조회
+	// 회원 정보 조회 : idx로 조회 
 	Member selectMemberByIdx(int idx);
-
-	// 회원 정보 수정
+	
+	// 회원 정보 update
 	int updateMember(Member member);
+	
+	// id 존재 유무 확인
+	int selectMemberByIdCount(String id);
+	
+	// idx, verify 조건으로 조회 
+	int selectMemberByIdxVerify(int index);
+	
+	// 인증처리 verify='Y'
+	int updateMemberVerify(int idx, String code); 
 }
 
 

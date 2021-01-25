@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="styleSheet" href="<c:url value="/css/default.css"/>">
+<%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <style>
 </style>
 </head>
@@ -26,7 +26,7 @@
 		${regData}
 		
 		<c:if test="${result > 0}">
-		정상적으로 회원가입이 되었습니다. 환영합니뎅 ~ (´▽`ʃ♡ƪ)(´▽`ʃ♡ƪ)
+		정상적으로 회원가입이 되었습니다. 
 		</c:if>
 		
 		<c:if test="${result eq 0}">
