@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://ja</va.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 <%-- <link rel="styleSheet"
 	href="${pageContext.request.contextPath}/css/default.css"> --%>
-	<%-- <link rel="styleSheet" href="<c:url value="/css/default.css"/>"> --%>
-<%@ include file="/WEB-INF/views/include/basicset.jsp" %>
+<%-- <link rel="styleSheet" href="<c:url value="/css/default.css"/>"> --%>
+<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <style>
 </style>
 </head>
@@ -30,9 +30,16 @@
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
-
-
-
+	<script>
+		<c:if test="${type eq 'delete'}">
+		<c:if test="${result eq 'ok' }">
+		alert('로그아웃 되었습니다.');
+		</c:if>
+		<c:if test="${result ne 'ok' }">
+		alert('로그아웃 처리 과정에서 문제가 발생하였습니다.');
+		</c:if>
+		</c:if>
+	</script>
 
 
 
