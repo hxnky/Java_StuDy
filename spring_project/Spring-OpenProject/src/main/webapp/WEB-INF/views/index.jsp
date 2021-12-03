@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://ja</va.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
 <style>
 </style>
 </head>
-<body>
+<body class="bg-light">
 
 
 
@@ -22,24 +22,24 @@
 
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
-	<div class="contents">
-		<h2 class="content_title">index</h2>
-		<hr>
-		<div class="content">인텍스 페이지 입니다.</div>
-	</div>
+	<main class="container">
+		<div
+			class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+			<div class="lh-1">
+				<h1 class="h2 mb-0 text-white lh-1">Index</h1>
+			</div>
+		</div>
+
+		<div class="my-3 p-3 bg-white rounded shadow-sm">
+			<h3 class="border-bottom pb-2 mb-0">Recent updates</h3>
+			<div class="d-flex text-muted pt-3">
+					INDEX				
+			</div>
+		</div>
+	</main>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
-	<script>
-		<c:if test="${type eq 'delete'}">
-		<c:if test="${result eq 'ok' }">
-		alert('로그아웃 되었습니다.');
-		</c:if>
-		<c:if test="${result ne 'ok' }">
-		alert('로그아웃 처리 과정에서 문제가 발생하였습니다.');
-		</c:if>
-		</c:if>
-	</script>
 
 
 
@@ -47,6 +47,19 @@
 
 
 
+
+
+<script>
+<c:if test="${param.type eq 'delete'}">
+<c:if test="${param.result eq 'ok'}">
+alert('로그아웃되었습니다.');	
+</c:if>
+<c:if test="${param.result ne 'ok'}">
+alert('처리과정에서 오류가 발생했습니다.');
+</c:if>
+</c:if>
+	
+</script>
 
 </body>
 </html>

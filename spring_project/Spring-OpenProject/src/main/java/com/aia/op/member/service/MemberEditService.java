@@ -58,6 +58,12 @@ public class MemberEditService {
 		// 수정할 데이터를 가지는 Member -> MemberDao
 		Member member = editRequest.getToMember();
 		
+		System.out.println(editRequest);
+		
+		System.out.println(member);
+		
+		System.out.println(editRequest.getOldPhoto());
+		
 		// 수정할 파일 이름 설정
 		if(newFileName == null) {
 			member.setMemberphoto(editRequest.getOldPhoto());

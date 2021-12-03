@@ -26,6 +26,7 @@ public class MemberEditController {
 			) {
 		// Service -> MemberDao -> mapper -> Member
 		model.addAttribute("member", editService.getMember(idx));
+		
 		return "member/editForm";
 	}
 	
